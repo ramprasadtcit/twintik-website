@@ -1,21 +1,56 @@
+/* =============================================================================
+   TWINTIK - GLOBAL STYLES
+   ============================================================================= */
+
+/* =============================================================================
+   FONTS & EXTERNAL IMPORTS
+   ============================================================================= */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* =============================================================================
+   TAILWIND CSS IMPORTS
+   ============================================================================= */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* =============================================================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   ============================================================================= */
 :root {
+  /* Brand Colors */
   --primary-600: #16a34a;
   --green-600: #16a34a;
   --green-700: #15803d;
   --green-800: #166534;
+  --blue-600: #1e40af;
+  --blue-700: #1e3a8a;
+  --gray-600: #6b7280;
+  --gray-700: #374151;
+  
+  /* Typography */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Spacing */
+  --section-padding: 4rem 1rem;
+  --container-max-width: 1200px;
+  
+  /* Mobile-first breakpoints */
+  --mobile-padding: 1rem;
+  --tablet-padding: 1.5rem;
+  --desktop-padding: 2rem;
 }
+
+/* =============================================================================
+   BASE STYLES
+   ============================================================================= */
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-family);
   background-color: #ffffff;
   color: #111827;
   line-height: 1.6;
@@ -23,7 +58,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Button Components */
+/* =============================================================================
+   BUTTON COMPONENTS
+   ============================================================================= */
+
+/* Primary Button - Main CTA */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -46,6 +85,7 @@ body {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
+/* Secondary Button - Alternative CTA */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -66,6 +106,7 @@ body {
   transform: scale(1.05);
 }
 
+/* Outline Button - Subtle CTA */
 .btn-outline {
   display: inline-flex;
   align-items: center;
@@ -87,6 +128,7 @@ body {
   transform: scale(1.05);
 }
 
+/* Ghost Button - Minimal styling */
 .btn-ghost {
   display: inline-flex;
   align-items: center;
@@ -103,51 +145,70 @@ body {
 }
 
 .btn-ghost:hover {
-  color: #111827;
   background: #f3f4f6;
+  color: #374151;
 }
 
-/* Card Components */
+/* Button Size Variants */
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* =============================================================================
+   CARD COMPONENTS
+   ============================================================================= */
+
+/* Base Card */
 .card {
   background: white;
   border-radius: 1rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  border: 1px solid #f3f4f6;
-  padding: 1.5rem;
-  transition: all 0.2s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
+/* Interactive Card with Hover Effects */
 .card-hover {
   background: white;
   border-radius: 1rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  border: 1px solid #f3f4f6;
-  padding: 1.5rem;
-  transition: all 0.3s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .card-hover:hover {
+  transform: translateY(-4px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  border-color: #bbf7d0;
-  transform: translateY(-0.25rem);
 }
 
-/* Background Gradients */
+/* =============================================================================
+   GRADIENT BACKGROUNDS
+   ============================================================================= */
+
+/* Standard Gradient */
 .gradient-bg {
-  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f0f9ff 100%);
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
 }
 
+/* Dark Gradient */
 .gradient-bg-dark {
-  background: linear-gradient(135deg, #1e1b4b 0%, #1e3a8a 50%, #1e40af 100%);
+  background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
 }
 
+/* Hero Section Gradient */
 .gradient-bg-hero {
-  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #15803d 100%);
   position: relative;
+  overflow: hidden;
 }
 
 .gradient-bg-hero::before {
@@ -157,11 +218,15 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2316a34a' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  pointer-events: none;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
 }
 
-/* Text Gradients */
+/* =============================================================================
+   TEXT GRADIENTS
+   ============================================================================= */
+
+/* Green Text Gradient */
 .text-gradient {
   background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
   -webkit-background-clip: text;
@@ -169,23 +234,27 @@ body {
   background-clip: text;
 }
 
+/* Purple Text Gradient */
 .text-gradient-purple {
-  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Form Styles */
+/* =============================================================================
+   FORM COMPONENTS
+   ============================================================================= */
+
+/* Standard Form Input */
 .form-input {
-  display: block;
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.75rem;
   font-size: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  background: white;
   transition: all 0.2s;
-  background-color: white;
 }
 
 .form-input:focus {
@@ -198,16 +267,15 @@ body {
   color: #9ca3af;
 }
 
-/* Form input with left icon */
+/* Form Input with Icon */
 .form-input-with-icon {
-  display: block;
   width: 100%;
-  padding: 0.75rem 1rem 0.75rem 3rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.75rem;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
   font-size: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  background: white;
   transition: all 0.2s;
-  background-color: white;
 }
 
 .form-input-with-icon:focus {
@@ -220,16 +288,15 @@ body {
   color: #9ca3af;
 }
 
-/* Form input with both left and right icons */
+/* Form Input with Icons on Both Sides */
 .form-input-with-icons {
-  display: block;
   width: 100%;
-  padding: 0.75rem 3rem 0.75rem 3rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.75rem;
+  padding: 0.75rem 2.5rem;
   font-size: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  background: white;
   transition: all 0.2s;
-  background-color: white;
 }
 
 .form-input-with-icons:focus {
@@ -242,6 +309,7 @@ body {
   color: #9ca3af;
 }
 
+/* Form Label */
 .form-label {
   display: block;
   font-size: 0.875rem;
@@ -250,19 +318,20 @@ body {
   margin-bottom: 0.5rem;
 }
 
+/* Form Error Message */
 .form-error {
-  margin-top: 0.25rem;
-  font-size: 0.875rem;
   color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
 }
 
-/* Animation Classes */
+/* =============================================================================
+   ANIMATIONS
+   ============================================================================= */
+
+/* Fade In Animation */
 .fade-in {
-  animation: fadeIn 0.6s ease-out;
-}
-
-.slide-up {
-  animation: slideUp 0.6s ease-out;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -272,6 +341,11 @@ body {
   to {
     opacity: 1;
   }
+}
+
+/* Slide Up Animation */
+.slide-up {
+  animation: slideUp 0.5s ease-out;
 }
 
 @keyframes slideUp {
@@ -285,9 +359,29 @@ body {
   }
 }
 
-/* Responsive Utilities */
+/* Loading Spinner */
+.spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #16a34a;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* =============================================================================
+   LAYOUT UTILITIES
+   ============================================================================= */
+
+/* Custom Container */
 .container-custom {
-  max-width: 80rem;
+  width: 100%;
+  max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -304,24 +398,31 @@ body {
   }
 }
 
+/* Section Padding */
 .section-padding {
-  padding: 4rem 0;
+  padding: var(--section-padding);
 }
 
 @media (min-width: 1024px) {
   .section-padding {
-    padding: 6rem 0;
+    padding: 6rem 2rem;
   }
 }
 
-/* Glass Effect */
+/* =============================================================================
+   GLASS EFFECT
+   ============================================================================= */
+
 .glass {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Custom Scrollbar */
+/* =============================================================================
+   SCROLLBAR STYLING
+   ============================================================================= */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -339,79 +440,80 @@ body {
   background: #94a3b8;
 }
 
-/* Focus Styles */
+/* =============================================================================
+   FOCUS RING UTILITIES
+   ============================================================================= */
+
 .focus-ring {
-  outline: none;
+  transition: all 0.2s;
 }
 
 .focus-ring:focus {
-  box-shadow: 0 0 0 2px #16a34a, 0 0 0 4px rgba(22, 163, 74, 0.1);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
 }
 
-/* Loading Spinner */
-.spinner {
-  width: 1.25rem;
-  height: 1.25rem;
-  border: 2px solid white;
-  border-top: 2px solid transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
+/* =============================================================================
+   BADGE COMPONENTS
+   ============================================================================= */
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Badge Styles */
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.625rem;
-  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .badge-primary {
-  background: #dcfce7;
-  color: #166534;
+  background: #dbeafe;
+  color: #1d4ed8;
 }
 
 .badge-success {
   background: #dcfce7;
-  color: #166534;
+  color: #15803d;
 }
 
 .badge-warning {
   background: #fef3c7;
-  color: #92400e;
+  color: #d97706;
 }
 
-/* Status Indicators */
+/* =============================================================================
+   STATUS INDICATORS
+   ============================================================================= */
+
 .status-dot {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
+  display: inline-block;
 }
 
 .status-dot-online {
-  background: #16a34a;
+  background: #22c55e;
 }
 
 .status-dot-offline {
-  background: #9ca3af;
+  background: #6b7280;
 }
 
-/* Custom Shadows */
+/* =============================================================================
+   SHADOW UTILITIES
+   ============================================================================= */
+
 .shadow-soft {
-  box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .shadow-medium {
-  box-shadow: 0 4px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .shadow-strong {
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }

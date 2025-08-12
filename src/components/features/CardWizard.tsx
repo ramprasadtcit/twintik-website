@@ -3,11 +3,6 @@ import { useForm } from 'react-hook-form';
 import { 
   User, 
   Mail, 
-  Phone, 
-  MapPin, 
-  Globe, 
-  Building, 
-  Briefcase,
   Palette,
   Image,
   ArrowRight,

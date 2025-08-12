@@ -1,26 +1,25 @@
 import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import { 
   Building, 
   Users, 
+  TrendingUp, 
   Crown, 
+  Settings, 
+  Edit3, 
+  ArrowRight, 
   Check, 
   X, 
-  ArrowRight,
-  Settings,
-  BarChart3,
-  Brain,
-  Smartphone,
-  QrCode,
-  Shield,
-  Zap,
-  MessageCircle,
-  Calendar,
-  FileText,
-  CreditCard,
-  Plus,
-  Edit3,
-  Trash2
+  Brain, 
+  Smartphone, 
+  QrCode, 
+  Shield, 
+  MessageCircle, 
+  Calendar, 
+  FileText, 
+  Star, 
+  Sparkles
 } from 'lucide-react';
 
 interface TeamMember {
@@ -127,10 +126,10 @@ const B2BSubscription: React.FC = () => {
   };
 
   const tabs = [
-    { id: 'overview', label: 'Overview', icon: <BarChart3 className="w-5 h-5" /> },
+    { id: 'overview', label: 'Overview', icon: <TrendingUp className="w-5 h-5" /> },
     { id: 'team', label: 'Team Management', icon: <Users className="w-5 h-5" /> },
-    { id: 'cards', label: 'Digital Cards', icon: <CreditCard className="w-5 h-5" /> },
-    { id: 'analytics', label: 'Analytics', icon: <BarChart3 className="w-5 h-5" /> },
+    { id: 'cards', label: 'Digital Cards', icon: <QrCode className="w-5 h-5" /> },
+    { id: 'analytics', label: 'Analytics', icon: <TrendingUp className="w-5 h-5" /> },
     { id: 'settings', label: 'Settings', icon: <Settings className="w-5 h-5" /> }
   ];
 
@@ -190,7 +189,7 @@ const B2BSubscription: React.FC = () => {
                 <div className="bg-white rounded-xl shadow-sm border p-6">
                   <div className="flex items-center">
                     <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                      <CreditCard className="w-6 h-6 text-green-600" />
+                      <QrCode className="w-6 h-6 text-green-600" />
                     </div>
                     <div className="ml-4">
                       <p className="text-sm font-medium text-gray-600">Active Cards</p>
@@ -202,7 +201,7 @@ const B2BSubscription: React.FC = () => {
                 <div className="bg-white rounded-xl shadow-sm border p-6">
                   <div className="flex items-center">
                     <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-                      <BarChart3 className="w-6 h-6 text-purple-600" />
+                      <TrendingUp className="w-6 h-6 text-purple-600" />
                     </div>
                     <div className="ml-4">
                       <p className="text-sm font-medium text-gray-600">Total Views</p>
@@ -214,7 +213,7 @@ const B2BSubscription: React.FC = () => {
                 <div className="bg-white rounded-xl shadow-sm border p-6">
                   <div className="flex items-center">
                     <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
-                      <Zap className="w-6 h-6 text-orange-600" />
+                      <Sparkles className="w-6 h-6 text-orange-600" />
                     </div>
                     <div className="ml-4">
                       <p className="text-sm font-medium text-gray-600">Leads Generated</p>
@@ -239,14 +238,14 @@ const B2BSubscription: React.FC = () => {
                     onClick={() => setActiveTab('cards')}
                     className="flex items-center justify-center space-x-2 p-4 border-2 border-dashed border-gray-300 rounded-xl hover:border-green-500 hover:bg-green-50 transition-colors"
                   >
-                    <CreditCard className="w-5 h-5 text-gray-400" />
+                    <QrCode className="w-5 h-5 text-gray-400" />
                     <span className="text-gray-600">Create Digital Card</span>
                   </button>
                   <button
                     onClick={() => setActiveTab('analytics')}
                     className="flex items-center justify-center space-x-2 p-4 border-2 border-dashed border-gray-300 rounded-xl hover:border-green-500 hover:bg-green-50 transition-colors"
                   >
-                    <BarChart3 className="w-5 h-5 text-gray-400" />
+                    <TrendingUp className="w-5 h-5 text-gray-400" />
                     <span className="text-gray-600">View Analytics</span>
                   </button>
                 </div>
